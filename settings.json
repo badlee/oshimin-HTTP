@@ -9,8 +9,9 @@
 	},
 	"indexFile" : [
 		"index.jsp",
-		"index.yml",
+		"index.jssp",
 		"index.ext",
+		"index.dr",
 		"index.html"
 	],
 	"server_script": {
