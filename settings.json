@@ -41,11 +41,7 @@
 		},
 		"extjs" : {
 			"mime" : "text/html",
-			"ext" : ["ext","extjs"]
-		},
-		"yml" : {
-			"mime" : "text/html",
-			"ext" : "yml"
+			"ext" : ["ext","dr"]
 		}
 	}
 }
