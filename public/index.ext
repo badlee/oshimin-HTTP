@@ -1,0 +1,4 @@
+document.title = "je suis un titre";
+Ext.onReady(function(){
+	Ext.Msg.alert("Ca marche!","Je suis dans mon premier script Extjs");
+});

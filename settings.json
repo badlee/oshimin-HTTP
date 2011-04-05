@@ -1,0 +1,51 @@
+{
+	"web_app_name" : "Oshimin HTTP",
+	"nodes" : 1,
+	"port"         : 8001,
+	"path"         : {
+	 	"lib"  : "app://libwww",
+	 	"plugin": "app://lib/plugins",
+	 	"render": "app://lib/renders"
+	},
+	"indexFile" : [
+		"index.jsp",
+		"index.yml",
+		"index.ext",
+		"index.html"
+	],
+	"server_script": {
+	     "script_ext" : "ssj",
+	     "session_minutes" : 0.1,
+	     "default_type" : "text/html",
+    	 "memcached"  : {
+			   "enable" : 0,
+			   "server" : "localhost",
+			   "port"   : 11211
+       	}
+    },
+	"logs" : {
+		"Engine"		:"DEBUG",
+		"ASemaphore"	:"ERROR",
+		"Session"		:"ERROR",
+		"Application"	:"ERROR",
+		"Page"			:"DEBUG"
+	},
+	"renderer" : {
+		"jsp" : {
+			"ext" : ["jsp","jssp"],
+			"mime" : "text/html",
+			"begin"                 : "<script server>",
+			 "write" 				 : " << ",
+			 "global" 				 : "[global]",		     
+			 "end"                   : "</script>"
+		},
+		"extjs" : {
+			"mime" : "text/html",
+			"ext" : ["ext","extjs"]
+		},
+		"yml" : {
+			"mime" : "text/html",
+			"ext" : "yml"
+		}
+	}
+}
