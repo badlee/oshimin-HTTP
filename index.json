@@ -1,5 +1,0 @@
-{
-	"id" : "com.oshimin.http.serv",
-	"main" : "http.serv.js",
-	"restart" : true
-}
