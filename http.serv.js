@@ -1,22 +1,24 @@
 var fs = require('fs'),
 engine = require(__dirname+'/lib/engine'),
-
-sys = require('sys');
+sys = require('sys'),
+log = require('log');
+    
+log.setLevel("HTTP","DEBUG");
 
 onmessage = function(e){
-	console.log("HTTP onMessage");
+	log.info("HTTP","onMessage");
 	e=e.data;
-	console.log(e);
+	log.info(sys.inspect(e));
 	if(e.from){
-		postMessage("de HTTP bien recu");
+		postMessage({to:e.from,message:e.from+" bien recu!"});
 	}else{
-		postMessage("de HTTP recu");
+		postMessage("de ? recu");
 	}
 };
 
 onerror = function(e){
-	console.log("Je suis une err : ");
-	console.log(e);
+	log.err("HTTP","Je suis une err");
+	log.err(sys.inspect(e));
 }
 
 if(typeof postMessage!="function") postMessage =  new Function;
@@ -28,13 +30,14 @@ setTimeout(function(){
 fs.readFile(__dirname+'/settings.json', function(err, data) {
     var settings = {};
     if (err) {
-        sys.puts('No settings.json found ('+err+'). Using default settings');
+    	log.err("HTTP",'No settings.json found. Using default settings');
+		log.err("HTTP",sys.inspect(err));
     } else {
         try {
             settings = JSON.parse(data.toString('utf8',0,data.length));
         } catch (e) {
-        	console.log("Je suis une err "+e);
-            sys.puts('Error parsing settings.json: '+e);
+        	log.err("HTTP","Je suis une err "+e);
+            log.err("HTTP",'Error parsing settings.json: '+sys.inspect(e));
             process.exit(1);
         }
     }

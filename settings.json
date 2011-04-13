@@ -1,9 +1,8 @@
 {
-	"web_app_name" : "Oshimin HTTP",
 	"nodes" : 1,
-	"port"         : 8001,
-	"path"         : {
-	 	"lib"  : "app://libwww",
+	"port"  : 8001,
+	"path"  : {
+	 	"lib"   : "app://libwww",
 	 	"plugin": "app://lib/plugins",
 	 	"render": "app://lib/renders"
 	},
@@ -11,38 +10,42 @@
 		"index.jsp",
 		"index.jssp",
 		"index.ext",
-		"index.dr",
 		"index.html"
 	],
 	"server_script": {
-	     "script_ext" : "ssj",
 	     "session_minutes" : 0.1,
-	     "default_type" : "text/html",
-    	 "memcached"  : {
-			   "enable" : 0,
-			   "server" : "localhost",
-			   "port"   : 11211
-       	}
+	     "default_type" : "text/html"
+    },
+    "https" : {
+    	"port":8002,
+    	"key" :"app://certificate/test_key.pem",
+    	"cert":"app://certificate/test_cert.pem"
     },
 	"logs" : {
-		"Engine"		:"DEBUG",
-		"ASemaphore"	:"ERROR",
-		"Session"		:"ERROR",
-		"Application"	:"ERROR",
-		"Page"			:"DEBUG"
+		"Engine"     :"DEBUG",
+		"ASemaphore" :"ERROR",
+		"Session"    :"ERROR",
+		"Application":"ERROR",
+		"Page"       :"DEBUG"
 	},
 	"renderer" : {
-		"jsp" : {
-			"ext" : ["jsp","jssp"],
-			"mime" : "text/html",
-			"begin"                 : "<script server>",
-			 "write" 				 : " << ",
-			 "global" 				 : "[global]",		     
-			 "end"                   : "</script>"
+		"jsp"  : {
+			"ext"    : ["jsp","jssp"],
+			"mime"   : "text/html",
+			"begin"  : "<script server>",
+			 "write" : " << ",	
+			 "global": "[global]",		     
+			 "end"   : "</script>"
 		},
 		"extjs" : {
 			"mime" : "text/html",
-			"ext" : ["ext","dr"]
+			"ext"  : ["ext","dr"]
 		}
-	}
+    },
+    "rewrite" : {
+    	"direct file" : {
+    		"regle" : ["(.)+.drt$","i"],
+    		"rewrite" : "$1.love"
+    	}
+    }
 }
