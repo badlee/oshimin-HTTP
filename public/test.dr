@@ -1,0 +1,39 @@
+//function
+hello : function (){
+	return "hello wolrd"+String.fromCharCode(13);
+},
+nerverEnd : function(){
+	setTimeout(function(){
+		write("Je suis un timer qui ne s'affiche jamais");
+		allIsDone();
+	},3*60*1000+1);
+	return "WAIT";
+},
+wait : function(){
+	self = this;
+	setTimeout(function(){
+		write("Je suis un timer Cool["+self.cool+"]");
+		allIsDone();
+	},10000);
+	return "WAIT";
+},
+arg : function(){
+	return arguments;
+},
+cool : 12,
+obj : {
+	"z":12,
+	"sq":"ds",
+	"boolean" : true,
+	"undef" : undefined
+},
+__v: 123+"Love.com",
+get me (){
+	log.debug("de","get me");
+	return this.__v;
+},
+set me(val){
+	log.debug("de","set me");
+	this.__v = val+"Love.com";
+}
+
